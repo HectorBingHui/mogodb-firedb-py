@@ -1,0 +1,41 @@
+#mongoDB syntax
+
+To start connection :  mongod
+To run server :  mongo --host 127.0.0.1:27017
+
+mongoDB: 
+- use <dbname> --> to create new Database
+- db --> show current db
+- show abs --> to display all DB
+- db.<table,collections>.insert(<object, document>) --> to insert to new object to <table, collection>
+- db.dropDataBase() --> to remove the current DB ( do "db" to see which you're in right now)
+- db.createCollection(name, options) --> is used to create collection 
+- show collections --> to see all created collections ( table)
+- db.createCollection(<collections>, { capped : true, autoIndexId : true, size : 6142800, max : 10000 } )
+- db.<collections>.drop() -> to delete a collections (use "show collections" to see what are the created collections)
+- db.<collection>.find() --> to query a collections
+- db.<collection>.find().pretty() --> to return the query in structured way
+- db.<collection>.find({"key":"value"}) --> where key = value
+- db.<collection>.find({"key":{$lt:value}}) --> where key < value
+- db.<collection>.find({"key":{$lte:value}}) --> where key <= value
+- db.<collection>.find({{"key":{$ne:value}}) --> where key != value
+- db.<collection>.find({{"key":{$gt:value}}) --> where key > value
+- db.<collection>.find({{"key":{$gte:value}}) --> where key >= value
+- db.<collection>.find({$and:[{key:value},{key:value}]} ==> using "AND"
+- db.<collection>.find({$or:[{key:value},{key:value}]} ==> using "OR"
+- db.<collection>.find({key: value, $or: [{key: value},{key: value}]}).pretty() ==> using AND and OR 
+- db.<collection>.update({key: tochanevalue},{$set:{key: new value}} ) ==> to update new value
+- db.<collection>.update({key: tochanevalue},{$set:{key: new value}},{multi:true}) ==> by default can update only , if more then one to update.
+- db.<collection>.save({<document>}) ==> to replace an document. 
+- db.<collection>.remove({<toremovekey: toremovevalue>},<NO>) => to del a document from collection. NO-to del how many document
+- db.<collection>.remove() ==> del the whole collection, if no criteria set in remove param
+- db.<collection>.find({},{key1:1,key2:1,_id:0}) ==> select key1 , key2 from collection if it is one, zero for id ( we don't want to know _id)
+- db.<collection>.find().limit(NUMBER) ==> to limit result
+- db.<collection>.find().limit(NUMBER).skip(NUMBER) ==> to skip result
+- db.<collection>.find().sort({KEY:1}) ==> to sort result 1 for ascending and -1 for descending
+- db.<collection>.ensureIndex({KEY:1}) ==> for fast retrieve with specified idx
+- db.<collection>.aggregate([{$group : {_id : "$<groupby>" , num_tutorial : {$sum : 1}}}])
+
+
+
+
